@@ -1,0 +1,26 @@
+{
+  "name": "api-restaurante",
+  "version": "1.0.0",
+  "description": " API sobre restaurante para el proyecto de desarrollo web",
+  "main": "index.js",
+  "scripts": {
+    "dev":"nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroDurango/API_BACK_DEV_WEB_2002_2.git"
+  },
+  "author": "Alejandro Durango",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlejandroDurango/API_BACK_DEV_WEB_2002_2/issues"
+  },
+  "homepage": "https://github.com/AlejandroDurango/API_BACK_DEV_WEB_2002_2#readme",
+  "dependencies": {
+    "express": "4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
