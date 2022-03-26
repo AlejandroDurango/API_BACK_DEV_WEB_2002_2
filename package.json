@@ -4,7 +4,7 @@
   "description": " API sobre restaurante para el proyecto de desarrollo web",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/AlejandroDurango/API_BACK_DEV_WEB_2002_2#readme",
   "dependencies": {
-    "express": "4.17.3"
+    "express": "4.17.3",
+    "mongodb": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

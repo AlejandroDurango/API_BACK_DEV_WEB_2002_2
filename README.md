@@ -16,12 +16,21 @@
 4. index.js Inicio del API
 5. .gitnore: Ignorar la carga de archivos y/o carpetas al repositorio
 
+## Estructura que retorna los endpoints
+
+```json
+{
+    "ok":"Boolean",
+    "message":"String",
+    "info":"Object"
+}
 
 ## Notas
 ### Comandos
 - `npm init` : inicializar el proyecto  con el package.json
 - `npm install NOMBRE`: Instalar las Librerias o frameworks
 - `npm install` o  `npm i`: Instalar las Librerias o frameworks del package.json
+- `npm run dev` Ejecutar el script qe se encuentra en el package Json
 
 ### Librerias y Frameworks
 1. Express: `npm install express `

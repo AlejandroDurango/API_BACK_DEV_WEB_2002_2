@@ -1,4 +1,8 @@
 
+//importar los servicios
+
+const run =require("../services/mongodb.service");
+
 //Controlador de usuarios
 ///nfn crear funciones
 /**
@@ -43,8 +47,25 @@ const modificarusuario = (req, res) => {
  * @param {Repsonse}res 
  */
  const consultarUsuarios = (req, res) => {
-    res.send("Consultar Usuarios")
-} 
+
+    let respuesta={}
+    try {
+        respuesta.ok=true
+        respuesta.message="Usuarios consultados correctamente."
+        //consulta a la base de de datos
+        run().catch(console.dir);
+        respuesta.info=[{nombre:"Juan"}]
+        res.send(respuesta)
+    } catch (error) {
+        respuesta.ok=false
+        respuesta.message="Ha ocurrido un error consultado los usuarios."
+        respuesta.info=error
+        res.status(500).send(respuesta)
+    }
+    
+
+ 
+}  
 
 module.exports={
     crearusuario,
