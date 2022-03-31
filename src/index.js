@@ -1,9 +1,12 @@
 //Importación del framework de express
 const express = require('express')
 
+require("../config/index.config")
+
 //Instanciar la aplicación de express
 const app = express()
-
+//aplicar miidleare 
+app.use (express.json())
 //Integrando el router con la app
 const router = require("./routers/index.router")
 app.use(router)
