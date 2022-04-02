@@ -1,7 +1,7 @@
 
 //importar los servicios
 
-const {leerDocumento,agregarDocumento,modificarDocumento,eliminarDocumento} =require("../services/mongodb.service");
+const {leerDocumentos,agregarDocumento,modificarDocumento,eliminarDocumento} =require("../services/mongodb.service");
 
 
 //Controlador de usuarios
@@ -38,8 +38,25 @@ const crearusuario = async (req, res) => {
  * @param {Request} req 
  * @param {Repsonse}res 
  */
-const modificarusuario = (req, res) => {
-    res.send("Modificar usuario")
+const modificarusuario = async (req, res) => {
+    let respuesta={}
+    try {
+        let _id=  req.body["id"]
+        respuesta.ok=true
+        respuesta.message="Usuarios modificado  correctamente."
+        //modificar usuario en la base de de datos
+        let informacion=req.body
+        let resultado = await modificarDocumento("usuarios",{_id},informacion)
+        console.log(resultado)
+        respuesta.info=resultado
+        res.send(respuesta)
+    } catch (error) {
+        console.log(error)
+        respuesta.ok=false
+        respuesta.message="Ha ocurrido un error modificando el usuario."
+        respuesta.info=error
+        res.status(500).send(respuesta)
+    }
 } 
 
 /**
@@ -47,8 +64,25 @@ const modificarusuario = (req, res) => {
  * @param {Request} req 
  * @param {Repsonse}res 
  */
- const eliminarUsuario = (req, res) => {
-    res.send("Eliminar Usuario")
+ const eliminarUsuario = async (req, res) => {
+    let respuesta={}
+    try {
+        let _id=  req.body["id"]
+        respuesta.ok=true
+        respuesta.message="Usuario eliminado  correctamente."
+        //modificar usuario en la base de de datos
+        let informacion=req.body
+        let resultado = await eliminarDocumento("usuarios",{_id})
+        console.log(resultado)
+        respuesta.info=resultado
+        res.send(respuesta)
+    } catch (error) {
+        console.log(error)
+        respuesta.ok=false
+        respuesta.message="Ha ocurrido un error al eliminar el usuario."
+        respuesta.info=error
+        res.status(500).send(respuesta)
+    }
 } 
 
 /**
@@ -56,8 +90,25 @@ const modificarusuario = (req, res) => {
  * @param {Request} req 
  * @param {Repsonse}res 
  */
- const consultarUsuario = (req, res) => {
-    res.send("Consultar Usuario")
+ const consultarUsuario = async(req, res) => {
+    let respuesta={}
+    try {
+        let _id=  req.body["id"]
+        respuesta.ok=true
+        respuesta.message="Usuario consultado correctamente."
+        //modificar usuario en la base de de datos
+        let informacion=req.body
+        let resultado = await leerDocumentos("usuarios",{_id})
+        console.log(resultado)
+        respuesta.info=resultado
+        res.send(respuesta)
+    } catch (error) {
+        console.log(error)
+        respuesta.ok=false
+        respuesta.message="Ha ocurrido un error al consultar el usuario."
+        respuesta.info=error
+        res.status(500).send(respuesta)
+    }
 } 
 
 /**
@@ -72,7 +123,7 @@ const modificarusuario = (req, res) => {
         respuesta.ok=true
         respuesta.message="Usuarios consultados correctamente."
         //consulta a la base de de datos
-        let resultado = await leerDocumento("usuarios")
+        let resultado = await leerDocumentos("usuarios")
         console.log(resultado)
         respuesta.info=resultado
         res.send(respuesta)
